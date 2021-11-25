@@ -7,12 +7,11 @@ on:
     branches: [ master ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
+    - name: Sed
+      run: sed -i "s|VERSION_TO_CHANGE|$(cat VERSION)|" Dockerfile
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag wp-redis:5.8.2
+      run: docker build . --file Dockerfile --tag wp-redis:$(cat VERSION)

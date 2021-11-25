@@ -1,4 +1,4 @@
-FROM wordpress:5.8.2-php8.0
+FROM wordpress:VERSION_TO_CHANGE
 
 RUN pecl install redis \
         && docker-php-ext-enable redis
